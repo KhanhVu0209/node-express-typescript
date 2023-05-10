@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.TemplateApi = void 0;
 class TemplateApi {
     constructor(payload, listPayload, message, success, pageNumber, pageSize, totalElement, totalPages) {
         this.payload = payload;
@@ -12,4 +13,4 @@ class TemplateApi {
         this.totalPages = totalPages;
     }
 }
-exports.default = TemplateApi;
+exports.TemplateApi = TemplateApi;

@@ -11,6 +11,8 @@ const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const http_1 = __importDefault(require("http"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const globalErrorHandler_1 = require("./src/utils/globalErrorHandler");
+const rootRoute_1 = __importDefault(require("./src/routes/rootRoute"));
 const app = (0, express_1.default)();
 const server = http_1.default.createServer(app);
 dotenv_1.default.config();
@@ -23,10 +25,9 @@ app.use(express_1.default.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express_1.default.urlencoded({ extended: true }));
 //init route
-// require("./src/routes/root.routes")(app);
-app.get('/', (req, res) => {
-    res.send('Express + TypeScript Server');
-});
+(0, rootRoute_1.default)(app);
+// Register error handler middleware last.
+app.use(globalErrorHandler_1.errorHandler);
 // set port, listen for requests
 const PORT = parseInt(process.env.SERVER_PORT);
 server.listen(PORT, () => {

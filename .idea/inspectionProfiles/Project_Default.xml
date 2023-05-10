@@ -3,6 +3,7 @@
     <option name="myName" value="Project Default" />
     <inspection_tool class="MsBuiltinInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="MsOrderByInspection" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="ReassignedToPlainText" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="SqlAddNotNullColumnInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="SqlAggregatesInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="SqlAmbiguousColumnInspection" enabled="false" level="WARNING" enabled_by_default="false" />

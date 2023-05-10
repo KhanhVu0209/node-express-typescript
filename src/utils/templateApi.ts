@@ -1,6 +1,6 @@
-class TemplateApi<T> {
-    public readonly payload: T;
-    public readonly listPayload: T[];
+export class TemplateApi<T> {
+    public readonly payload: T | null;
+    public readonly listPayload: T[] | null;
     public readonly message: string;
     public readonly success: boolean;
     public readonly pageNumber: number;
@@ -9,8 +9,8 @@ class TemplateApi<T> {
     public readonly totalPages: number;
 
     constructor(
-        payload: T,
-        listPayload: T[],
+        payload: T | null,
+        listPayload: T[] | null,
         message: string,
         success: boolean,
         pageNumber: number,
@@ -28,5 +28,3 @@ class TemplateApi<T> {
         this.totalPages = totalPages;
     }
 }
-
-export default TemplateApi;
