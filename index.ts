@@ -1,3 +1,5 @@
+import rootRoute from "./src/routes/rootRoute";
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require('cors');
@@ -23,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 //init route
-app.use('/unit', require('./src/routes/unitRoute'))
+rootRoute(app)
 
 // Register error handler middleware last.
 // app.use(errorHandler);

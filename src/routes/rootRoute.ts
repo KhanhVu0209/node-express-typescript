@@ -1,9 +1,9 @@
-// import {Express} from 'express';
-//
-// import unitRoutes from './unitRoute';
-//
-// export const rootRoute = (app: Express): void => {
-//     app.use("/api/v1", unitRoutes);
-// };
+import {Express} from 'express';
 
-// export const rootRoute;
+const unitRoutes = require('./unitRoute');
+
+const rootRoute = (app: Express): void => {
+    app.use("/api/v1", unitRoutes);
+};
+
+export default rootRoute;

@@ -5,8 +5,7 @@ import * as unitCtrl from '../controllers/unitController';
 
 const router = Router();
 
-// @ts-ignore
-router.get('/unit', unitCtrl.FindAllUnit);
+router.get('/unit', unitCtrl.FindAllUnit as any);
 // router.get('/unit/available', unitCtrl.FindAllUnitAvailable);
 // router.get('/unit/:id', unitCtrl.FindUnitById);
 // router.route('/unit/insertUnit').post(authMiddleware.AuthAdmin, unitCtrl.InsertUnit);
