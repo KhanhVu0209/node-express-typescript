@@ -1,10 +1,11 @@
 import {Sequelize} from 'sequelize'
+import env from "../utils/environmentVar";
 
 // Option 3: Passing parameters separately (other dialects)
-const databaseConfig = new Sequelize('PartyManagment', 'sa', 'P@ssw0rdSQL!@#11052022', {
-    host: '115.74.201.161',
+const databaseConfig = new Sequelize(env.SQL_DATABASE_NAME, env.SQL_USER, env.SQL_PASSWORD, {
+    host: env.SQL_HOST,
     dialect: 'mssql',
-    port: 36900,
+    port: env.SQL_PORT,
     logging: false,
     dialectOptions: {
         options: {

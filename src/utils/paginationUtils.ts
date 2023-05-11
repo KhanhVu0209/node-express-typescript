@@ -1,5 +1,6 @@
 import {TemplateApi} from './templateApi';
 import {camelCase} from "lodash";
+
 function toCamelCase<T>(results: object[]): T[] {
     return results.map((obj) => {
         return Object.fromEntries(
@@ -7,6 +8,7 @@ function toCamelCase<T>(results: object[]): T[] {
         ) as T;
     });
 }
+
 export function HandleGetAllRespond<T>(
     pageNumber: number,
     pageSize: number,
@@ -38,9 +40,10 @@ export function HandleGetAllRespond<T>(
     }
     const numPagesize: number = pageSize === 0 ? 1 : pageSize;
 
+
     return new TemplateApi<T>(
         null,
-        toCamelCase(results),
+        toCamelCase<T>(results),
         "Lấy danh sách thành công !",
         true,
         pageNumber,
@@ -50,30 +53,29 @@ export function HandleGetAllRespond<T>(
     );
 }
 
-// export const HandleGetByIdRespond = (
-//     results: object[]
-// ) => {
-//     if (results.length === 0 || results[0] == null) {
-//         return new TemplateApi(
-//             null,
-//             null,
-//             "Không tồn tại dữ liệu !",
-//             false,
-//             0,
-//             0,
-//             0,
-//             0
-//         );
-//     }
-//
-//     return new TemplateApi(
-//         results,
-//         null,
-//         "Lấy thông tin thành công !",
-//         true,
-//         0,
-//         0,
-//         results.length,
-//         0
-//     );
-// }
+export function HandleGetByIdRespond<T>(
+    results: object[] | null
+) {
+    if (!results) {
+        return new TemplateApi<T>(
+            null,
+            null,
+            "Không tồn tại dữ liệu !",
+            false,
+            0,
+            0,
+            0,
+            0
+        );
+    }
+    return new TemplateApi<T>(
+        null,
+        toCamelCase<T>(results),
+        "Lấy thông tin thành công !",
+        true,
+        0,
+        0,
+        results.length,
+        0
+    );
+}

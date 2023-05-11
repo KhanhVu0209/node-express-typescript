@@ -1,17 +1,26 @@
 import db from "../config/databaseConfig";
 import {QueryTypes} from "sequelize";
-import {HandleGetAllRespond} from "../utils/paginationUtils";
+import {HandleGetAllRespond, HandleGetByIdRespond} from "../utils/paginationUtils";
 import {queryUnits} from "../queries/unitQuery";
 import {TemplateApi} from "../utils/templateApi";
-import Unit from "../models/unitModel";
+import UnitModel from "../models/unitModel";
 
-export const findAllUnit = async (pageNumber: number, pageSize: number): Promise<TemplateApi<Unit>> => {
-    let results = await db.sequelize.query<Unit>(
+export const findAllUnit = async (pageNumber: number, pageSize: number): Promise<TemplateApi<UnitModel>> => {
+    let results = await db.sequelize.query<UnitModel>(
         queryUnits.getAllUnit,
         {
             type: QueryTypes.SELECT,
         }
     );
 
-    return HandleGetAllRespond<Unit>(pageNumber, pageSize, results, results.length);
+    return HandleGetAllRespond<UnitModel>(pageNumber, pageSize, results, results.length);
+}
+
+export const findUnitById = async (idUnit: string): Promise<TemplateApi<UnitModel>> => {
+    const results = await db.sequelize.query<UnitModel>(queryUnits.getByIdUnit, {
+        replacements: {Id: idUnit},
+        type: QueryTypes.SELECT,
+    });
+
+    return HandleGetByIdRespond<UnitModel>(results);
 }

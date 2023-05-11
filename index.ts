@@ -1,4 +1,6 @@
 import rootRoute from "./src/routes/rootRoute";
+import {errorHandler} from "./src/utils/globalErrorHandler";
+import env from "./src/utils/environmentVar";
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -6,7 +8,6 @@ const cors = require('cors');
 const cookieParser = require("cookie-parser");
 const http = require("http");
 const dotenv = require('dotenv');
-// import {errorHandler} from "./src/utils/globalErrorHandler";
 const app = express();
 const server = http.createServer(app);
 
@@ -28,10 +29,10 @@ app.use(express.urlencoded({extended: true}));
 rootRoute(app)
 
 // Register error handler middleware last.
-// app.use(errorHandler);
+app.use(errorHandler);
 
 // set port, listen for requests
-const PORT = parseInt(process.env.SERVER_PORT || '9000');
+const PORT = env.SERVER_PORT;
 server.listen(PORT, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 })

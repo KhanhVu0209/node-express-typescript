@@ -1,9 +1,9 @@
-export default interface Unit{
-    id: any;
+export default interface UnitModel{
+    id: string;
     unitName: string;
-    parentId: any;
+    parentId: string;
     status: number;
-    createdBy: any;
+    createdBy: string;
     createdDate: Date;
     unitCode: string;
     isHide: boolean;
